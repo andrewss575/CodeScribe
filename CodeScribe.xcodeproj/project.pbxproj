@@ -13,7 +13,6 @@
 		206BC25F2CC75F440015820E /* CodeScribeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BC25E2CC75F440015820E /* CodeScribeTests.swift */; };
 		206BC2692CC75F440015820E /* CodeScribeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BC2682CC75F440015820E /* CodeScribeUITests.swift */; };
 		206BC26B2CC75F440015820E /* CodeScribeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BC26A2CC75F440015820E /* CodeScribeUITestsLaunchTests.swift */; };
-		2093F8742D11418C00C0236E /* fleet-garage-445004-s0-36334c80f664.json in Resources */ = {isa = PBXBuildFile; fileRef = 2093F8732D11418C00C0236E /* fleet-garage-445004-s0-36334c80f664.json */; };
 		2093F8762D1143C400C0236E /* GoogleVisionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2093F8752D1143AF00C0236E /* GoogleVisionAPI.swift */; };
 		20D6D0652D0ACF6C003FF6E7 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6D0642D0ACF5E003FF6E7 /* CanvasView.swift */; };
 		20D6D0692D0AD1F7003FF6E7 /* JDoodleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6D0682D0AD175003FF6E7 /* JDoodleAPI.swift */; };
@@ -54,7 +53,6 @@
 		206BC2642CC75F440015820E /* CodeScribeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeScribeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		206BC2682CC75F440015820E /* CodeScribeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScribeUITests.swift; sourceTree = "<group>"; };
 		206BC26A2CC75F440015820E /* CodeScribeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScribeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		2093F8732D11418C00C0236E /* fleet-garage-445004-s0-36334c80f664.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "fleet-garage-445004-s0-36334c80f664.json"; sourceTree = "<group>"; };
 		2093F8752D1143AF00C0236E /* GoogleVisionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionAPI.swift; sourceTree = "<group>"; };
 		20D6D0642D0ACF5E003FF6E7 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		20D6D0682D0AD175003FF6E7 /* JDoodleAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JDoodleAPI.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				20D6D07A2D0B4E5F003FF6E7 /* Assets.xcassets */,
 				20D6D0742D0B4598003FF6E7 /* StartPageView.swift */,
 				206BC2552CC75F430015820E /* CodeScribe.entitlements */,
-				2093F8732D11418C00C0236E /* fleet-garage-445004-s0-36334c80f664.json */,
 				206BC2522CC75F430015820E /* Preview Content */,
 			);
 			path = CodeScribe;
@@ -272,7 +269,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2093F8742D11418C00C0236E /* fleet-garage-445004-s0-36334c80f664.json in Resources */,
 				20D6D07B2D0B4E5F003FF6E7 /* Assets.xcassets in Resources */,
 				206BC2542CC75F430015820E /* Preview Assets.xcassets in Resources */,
 			);
