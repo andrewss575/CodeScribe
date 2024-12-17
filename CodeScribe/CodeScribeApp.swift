@@ -1,3 +1,4 @@
+
 //
 //  CodeScribeApp.swift
 //  CodeScribe
@@ -11,7 +12,7 @@ import SwiftUI
 struct CodeScribeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartPageView() // Start with the welcome page
         }
     }
 }
