@@ -76,6 +76,7 @@ struct FileEditorView: View {
     @State private var output = ""
     @State private var isExecuting = false
     @State private var selectedLanguage = "Python 3"
+    @State private var useGoogleVision = false // Toggle to switch APIs
 
     private let jdoodleAPI = JDoodleAPI()
     private let languages = ["Python 3", "Java", "C", "C++", "JavaScript"]
@@ -147,14 +148,14 @@ struct FileEditorView: View {
                         .font(.largeTitle) // Change to a larger font, e.g., largeTitle
                         .fontWeight(.bold) // Optionally make it bold
                         .font(.headline)
-
+                    
                     // Zoomable Canvas
                     ZStack {
                         ZoomableCanvasView(canvasView: $canvasView, penColor: $penColor, penSize: $penSize)
                     }
                     .frame(height: 750)
                     .border(Color.gray, width: 1)
-
+                    
                     // Pen Customization Toolbar
                     HStack(spacing: 10) {
                         // Color Picker
@@ -168,7 +169,7 @@ struct FileEditorView: View {
                                     .overlay(Circle().stroke(penColor == color ? Color.white : Color.clear, lineWidth: 2))
                             }
                         }
-
+                        
                         // Size Picker
                         ForEach(sizes, id: \.self) { size in
                             Button(action: {
@@ -182,8 +183,9 @@ struct FileEditorView: View {
                             }
                         }
                     }
-
+                    
                     // Toolbar for Drawing Actions
+                    // Inside Toolbar for Drawing Actions
                     HStack(spacing: 10) {
                         Button(action: clearCanvas) {
                             HStack {
@@ -195,7 +197,7 @@ struct FileEditorView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                         }
-
+                        
                         Button(action: toggleTool) {
                             HStack {
                                 Image(systemName: isEraserActive ? "pencil" : "eraser")
@@ -206,8 +208,20 @@ struct FileEditorView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                         }
-
-                        Button(action: recognizeHandwriting) {
+                        
+                        // Recognize Handwriting
+                        Button(action: {
+                            RecognizerHelper.recognizeText(from: canvasView, useGoogleVision: useGoogleVision) { recognizedText in
+                                DispatchQueue.main.async {
+                                    let formattedText = RecognizerHelper.autoIndentCode(recognizedText)
+                                    if let insertionPoint = script.range(of: "Your code starts here") {
+                                        script.replaceSubrange(insertionPoint, with: "Your code starts here\n\(formattedText)")
+                                    } else {
+                                        script += "\n" + formattedText
+                                    }
+                                }
+                            }
+                        }) {
                             HStack {
                                 Image(systemName: "text.viewfinder")
                                 Text("Codeify")
@@ -217,6 +231,12 @@ struct FileEditorView: View {
                             .foregroundColor(.white)
                             .cornerRadius(10)
                         }
+                        
+                        // Toggle for API
+                        Toggle("Use Google Vision", isOn: $useGoogleVision)
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(10)
                     }
                 }
 
@@ -255,23 +275,23 @@ struct FileEditorView: View {
                         .padding(.horizontal)
 
                   
-
-                    // Execute Button
-                    Button(action: executeCode) {
-                        if isExecuting {
-                            ProgressView()
-                                .padding()
-                        } else {
-                            Text("Run Code")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                        // Execute Button
+                        Button(action: executeCode) {
+                            if isExecuting {
+                                ProgressView()
+                                    .padding()
+                            } else {
+                                Text("Run Code")
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         }
-                    }
-                    .disabled(isExecuting)
-                    .padding(.horizontal)
-
+                        .disabled(isExecuting)
+                        .padding(.horizontal)
+                        
+                     
                     // Output Section
                     VStack(alignment: .leading) {
                         Text("Output:")
@@ -311,7 +331,8 @@ struct FileEditorView: View {
 
     // Recognizes handwriting and updates the script directly
     func recognizeHandwriting() {
-        RecognizerHelper.recognizeText(from: canvasView) { recognizedText in
+        RecognizerHelper.recognizeText(from: canvasView, useGoogleVision: useGoogleVision) { recognizedText in
+
             DispatchQueue.main.async {
                 if let insertionPoint = script.range(of: "Your code starts here") {
                     script.replaceSubrange(insertionPoint, with: "Your code starts here\n\(recognizedText)")
