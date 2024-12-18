@@ -92,10 +92,10 @@ Draw your code on the canvas, convert it to typed code, and execute it instantly
                         Spacer() // Pushes the image downwards
 
                         // Display an app-related image
-                        Image("pngegg(1)") // Replace with your asset name
+                        Image("pngegg(1)")
                             .resizable() // Allows resizing of the image
                             .scaledToFit() // Maintains aspect ratio while fitting within the frame
-                            .frame(width: 500, height: 500) // Sets the image size
+                            .frame(width: 750, height: 750) // Sets the image size
                             .cornerRadius(30) // Rounded corners for the image
                             .shadow(color: .gray.opacity(0.3), radius: 10, x: 0, y: 5) // Adds a shadow for depth
                             .padding() // Adds padding around the image

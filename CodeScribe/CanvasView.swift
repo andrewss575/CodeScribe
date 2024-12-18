@@ -41,8 +41,8 @@ struct ZoomableCanvasView: UIViewRepresentable {
             canvasView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             canvasView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
             canvasView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            canvasView.widthAnchor.constraint(equalToConstant: 1000), // Large canvas width
-            canvasView.heightAnchor.constraint(equalToConstant: 1000) // Large canvas height
+            canvasView.widthAnchor.constraint(equalToConstant: 750), // Large canvas width
+            canvasView.heightAnchor.constraint(equalToConstant: 750) // Large canvas height
         ])
 
         return scrollView

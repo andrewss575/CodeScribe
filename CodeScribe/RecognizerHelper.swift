@@ -76,7 +76,7 @@ struct RecognizerHelper {
     }
 
     // Apple's Vision Framework for text recognition
-    private static func recognizeTextWithVision(imageData: Data, completion: @escaping (String) -> Void) {
+    static func recognizeTextWithVision(imageData: Data, completion: @escaping (String) -> Void) {
         guard let cgImage = UIImage(data: imageData)?.cgImage else {
             print("Failed to create CGImage")
             completion("")
